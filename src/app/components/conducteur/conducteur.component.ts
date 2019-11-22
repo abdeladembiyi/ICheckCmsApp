@@ -13,7 +13,7 @@ import { EditConducteurComponent } from './edit-conducteur/edit-conducteur.compo
 })
 export class ConducteurComponent implements OnInit {
 
-  displayedColumns: string[] = ['nomcomplet', 'cin', 'cnss', 'assurance', 'dateValiditeAssurance', 'patente','actions'];
+  displayedColumns: string[] = ['nomcomplet', 'cin', 'cnss', 'permis','actions'];
   dataSource = new MatTableDataSource();
   societeControl = new FormControl();
   searchKey: string;
@@ -28,6 +28,7 @@ export class ConducteurComponent implements OnInit {
   // Recuperation de la liste des conducteurs
   refresh() {
     this.service.getAllConducteur().subscribe((res: any[]) => {
+      console.log(res)
       this.conducteurDataService.changeConducteurDataSource(res);
     });
     this.conducteurDataService.currentConducteurDataSource.subscribe(data => {this.dataSource.data = data;this.dataSource.paginator = this.paginator});

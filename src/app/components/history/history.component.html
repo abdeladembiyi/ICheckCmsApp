@@ -38,7 +38,7 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="dateDeblockage">
       <th mat-header-cell *matHeaderCellDef> date de deblockage </th>
-      <td mat-cell *matCellDef="let element"> {{element.dateDeblockage}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.dateDeblockage| date: 'dd/MM/yyyy'}} </td>
     </ng-container>
 
     <!-- <ng-container matColumnDef="imageUrl">

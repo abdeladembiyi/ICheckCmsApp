@@ -44,6 +44,9 @@ export class StatsService {
     return this.http.get(`${API}/Nonsuspendu`);
   }
   getNumberOfControled(){
+    return this.http.get(`${API}/controledSite`);
+  }
+  getControled(){
     return this.http.get(`${API}/controled`);
   }
 }
