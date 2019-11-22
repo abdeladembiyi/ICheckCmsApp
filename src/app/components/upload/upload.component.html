@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Motif de suspension</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <!-- <ion-grid>
+      <ion-row>
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+    <form [formGroup]="motifForm" (ngSubmit)="submit(motifForm)">
+      <div>
+        <mat-form-field class="w-100 h-50">
+          <input matInput placeholder="Motif" formControlName="motif">
+        </mat-form-field>
+        <button mat-stroked-button color="warn" (click)="takePicture()">Prendre une photo</button> 
+      </div>
+
+      <div>
+        
+      </div>
+
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,107 @@
+<div>
+  <form (ngSubmit)="onSubmit(form.value)" [formGroup]="form" *ngIf="form">
+
+    <span class="form-row justify-content-center">
+      <!-- <img src="../../../assets/shapes.svg" class="mx-auto d-block" style="margin-top: 2%;"/> -->
+      <!-- <app-dynamic-form-question [question]="questions[0]" [form]="form"></app-dynamic-form-question>-->
+
+      <img [src]="createImagePath(imageEngin)" class="mt-2 mr-3" />
+
+      <mat-vertical-stepper style="margin-top: 2%; margin-left: 3%;" #stepper [dir]="dir">
+
+        <mat-step [stepControl]="formConducteur">
+          <ng-template matStepLabel>
+            <h4>السائق</h4>
+          </ng-template>
+          <!-- <app-check-list-conducteur></app-check-list-conducteur> -->
+          <div [formGroup]="formConducteur">
+            <diV>
+              <mat-form-field style="text-align: left" dir="ltr">
+                <input type="text" matInput formControlName="cin" placeholder="C.I.N" [matAutocomplete]="cin" />
+              </mat-form-field>
+
+              <mat-autocomplete #cin="matAutocomplete" (optionSelected)="getConducteur($event)">
+                <mat-option *ngFor="let conducteur of (filteredConducteurs | async)" [value]="conducteur.cin">
+                  {{conducteur.cin}}</mat-option>
+              </mat-autocomplete>
+            </diV>
+            <div>
+              <mat-form-field style="text-align: left" dir="ltr">
+                <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
+                  [value]="formConducteur.controls['cin'].value !== '' ? nomComplet.value : ''" />
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div dir="ltr">
+            <!-- <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button> -->
+            <button mat-raised-button class="mr-2" matSepperNext
+              (click)="onSub(stepper, formConducteur.value, 'conducteur')">Suivant</button>
+          </div>
+        </mat-step>
+
+        <mat-step [stepControl]="formEngin">
+          <ng-template matStepLabel>
+            <h4>العربة</h4>
+          </ng-template>
+          <!-- <app-check-list-engin></app-check-list-engin> -->
+          <div [formGroup]="formEngin">
+            <diV>
+              <mat-form-field style="text-align: left" dir="ltr">
+                <input type="text" matInput formControlName="matricule" placeholder="Matricule"
+                  [matAutocomplete]="matricule" />
+              </mat-form-field>
+
+              <mat-autocomplete #matricule="matAutocomplete">
+                <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
+                  {{vehicule.matricule}}</mat-option>
+              </mat-autocomplete>
+            </diV>
+          </div>
+          <div dir="ltr">
+            <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
+            <button mat-raised-button class="mr-2" matSepperNext
+              (click)="onSub(stepper, formEngin.value, 'vehicule')">Suivant</button>
+          </div>
+        </mat-step>
+
+        <mat-step *ngFor="let question of questions; let i=index;" [stepControl]="question">
+          <div [formGroup]="form">
+            <ng-template matStepLabel>
+              <h4>{{question.key}}</h4>
+            </ng-template>
+            <app-dynamic-form-question [question]="question" [form]="form">
+            </app-dynamic-form-question>
+            <div dir="ltr">
+              <button mat-raised-button matStepperPrevious>Précedent</button>
+              <button mat-raised-button matStepperNext class="ml-2">Suivant</button>
+            </div>
+          </div>
+        </mat-step>
+
+        <mat-step [stepControl]="null">
+          <ng-template matStepLabel>
+            <h4>تأكيد</h4>
+          </ng-template>
+          <div dir="ltr">
+            <ngb-rating [rate]="3.75"></ngb-rating>
+          </div>
+          <div dir="ltr">
+            <button mat-raised-button matStepperPrevious class="mr-2">Précedent</button>
+            <button mat-raised-button class="mr-2" matSepperNext (click)="valider()">Envoyer</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </span>
+
+    <!-- <div class="form-row">
+      <button type="submit" [disabled]="!form.valid">Save</button>
+    </div> -->
+  </form>
+
+  <!-- <div *ngIf="payLoad" class="form-row">
+    <strong>Saved the following values</strong><br>{{payLoad}}
+  </div> -->
+</div>
+<!-- [ngClass]="{'justify-content-end': i === 0, 'justify-content-center': i === 1, 'justify-content-start': i === 2}" -->

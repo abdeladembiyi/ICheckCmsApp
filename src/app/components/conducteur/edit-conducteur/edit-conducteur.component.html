@@ -1,0 +1,38 @@
+<div class="container">
+    <h2 class="mb-2">Modifier le conducteur avec l'ID: {{this.data.id}}</h2>
+    <form [formGroup]="editConducteurForm" (ngSubmit)="onEditSubmit(editConducteurForm)">
+      <div class="d-flex form-row justify-content-center">
+        <mat-form-field class="w-75">
+          <input matInput placeholder="Veuillez saisir le nom du conducteur" formControlName="nomComplet"
+            name="nomcomplet">
+        </mat-form-field>
+        <mat-form-field class="w-75">
+          <input matInput placeholder="Cin" formControlName="cin" name="cin">
+        </mat-form-field>
+        <mat-form-field class="w-75">
+          <input matInput placeholder="Cnss" formControlName="cnss" name="cnss">
+        </mat-form-field>
+        <mat-form-field class="w-75">
+          <input matInput placeholder="Assurance" formControlName="assurance" name="assurance">
+        </mat-form-field>
+        <mat-form-field class="w-75">
+          <input type="date" matInput placeholder="dateValiditeAssurance" formControlName="dateValiditeAssurance"
+            name="dateValiditeAssurance">
+        </mat-form-field>
+        <mat-form-field class="w-75">
+          <input matInput placeholder="Patente" formControlName="patente" name="patente">
+        </mat-form-field> 
+        <mat-form-field class="w-75">
+          <input matInput placeholder="Societe" formControlName="societe" name="societe">
+        </mat-form-field>
+      </div>
+      <!-- <div class="d-flex form-row justify-content-start">
+            <mat-checkbox class="ml-2 mt-2" formControlName="show" name="show">Afficher la règle</mat-checkbox>
+        </div> -->
+  
+      <div class="d-flex form-row justify-content-end">
+        <button class="mr-2" mat-raised-button (click)="close()">Annuler</button>
+        <button mat-raised-button>Valider</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,65 @@
+<ion-split-pane contentId="menu-content">
+
+  <ion-menu side="start" contentId="menu-content" menuId="first">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>I-Check</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+
+      <div *ngFor="let p of pages">
+        <ng-container *ngIf="p.url === 'logout'">
+          <ion-item button (click)="logout()">
+            <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ng-container>
+
+        <ng-container *ngIf="p.url !== 'logout'; else childrenItem">
+          <ion-item button *ngIf="p.url; else childrenItem" [routerLink]="[{ outlets: { admin: [p.url] } }]"
+             [class.active-parent]="p.open" detail="false">
+            <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
+            <ion-icon slot="end" name="arrow-dropright" *ngIf="p.children?.length > 0 && !p.open"></ion-icon>
+            <ion-icon slot="end" name="arrow-dropdown" *ngIf="p.children?.length > 0 && p.open"></ion-icon>
+            <ion-label class="ion-text-wrap">{{ p.title }}</ion-label>
+          </ion-item>
+        </ng-container>
+
+
+
+        <ion-list *ngIf="p.open">
+          <ion-item button class="sub-item" *ngFor="let sub of p.children" (click)="navigateTo(sub.url)"
+            routerDirection="root" routerLinkActive="active">
+            <ion-label>{{ sub.title }}</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ng-template #childrenItem>
+          <ng-container *ngIf="p.url !== 'logout'">
+            <ion-item button (click)="p.open = !p.open" [class.active-parent]="p.open" detail="false">
+              <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
+              <ion-icon slot="end" name="arrow-dropright" *ngIf="p.children?.length > 0 && !p.open"></ion-icon>
+              <ion-icon slot="end" name="arrow-dropdown" *ngIf="p.open"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ng-container>
+
+        </ng-template>
+
+        <!-- <ng-template #logoutTemplate>
+          <ion-item button (click)="logout()">
+            <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ng-template> -->
+
+
+      </div>
+    </ion-content>
+  </ion-menu>
+
+  <!-- <ion-nav #menu-content main></ion-nav> -->
+  <!-- the main content -->
+  <ion-router-outlet id="menu-content" name="admin"></ion-router-outlet>
+</ion-split-pane>

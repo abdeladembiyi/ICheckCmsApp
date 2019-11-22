@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center">
+
+    <div class="example-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <mat-card class="example-card">
+        <span class="row justify-content-center"><img [src]="iCheckLogo" style="width: 150px;"></span>
+        <h2>Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit(loginForm.value)">
+            <mat-form-field class="example-full-width">
+                <input matInput type="email" placeholder="Email/Pseudo" formControlName="username"
+                    [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">Veuillez saisir
+                        votre email ou pseudo</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput type="password" placeholder="Password" formControlName="password"
+                    [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Veuillez saisir
+                        votre mote de passe</span>
+                </mat-error>
+            </mat-form-field>
+            <div *ngIf="message" class="form-row justify-content-center message">{{message}}</div>
+            <div class="form-row justify-content-center">
+                <button type="submit" [disabled]="!loginForm.valid" mat-flat-button color="primary">Login</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

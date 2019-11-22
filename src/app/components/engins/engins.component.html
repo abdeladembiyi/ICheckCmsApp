@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Check-list
+        <button mat-raised-button (click)="logout()" style="width:7%;float: right;">
+          <ion-icon class="big" slot="start" [src]="logoutIcon"></ion-icon>
+          <!-- <ion-label>Logout</ion-label> -->
+        </button>
+      </ion-title>
+  
+    </ion-toolbar>
+  
+  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row class="row justify-content-center">
+      <ion-col *ngFor="let item of engins" size="8" class="">
+        <a button [routerLink]="['/checklist', item.nomEngin]">
+          <img *ngIf="item.nomEngin == 'Camion' || item.nomEngin == 'Nacelle' || item.nomEngin == 'GrueMobile'" [src]="createImagePath(item.imageEngin)" class="img-thumbnail" />
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,51 @@
+.button1 {
+  //   position: absolute;
+  right: 110px;
+  top: -69px;
+  width: 15px;
+  height: 15px;
+}
+.button2 {
+  //   position: absolute;
+  right: 110px;
+  top: -5px;
+  width: 15px;
+  height: 15px;
+}
+
+.button3 {
+  //   position: absolute;
+  right: 121px;
+  top: 38px;
+  width: 15px;
+  height: 15px;
+}
+.button4 {
+  //   position: absolute;
+  right: 116px;
+  top: 112px;
+  width: 15px;
+  height: 15px;
+}
+
+.button5 {
+  //   position: absolute;
+  right: 80px;
+  top: 82px;
+  width: 12px;
+  height: 12px;
+}
+.image {
+  //   position: sticky;
+  //   left: 620px;
+  height: 250px;
+  //   justify-content: center;
+}
+
+.isActive {
+  background-color: green;
+}
+
+.isNotActive {
+  background-color: red;
+}

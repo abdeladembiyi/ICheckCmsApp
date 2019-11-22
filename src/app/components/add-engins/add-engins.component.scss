@@ -1,0 +1,57 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    justify-content: center;
+    margin-left: 20%;
+    margin-top: 5%;
+  }
+  
+  .example-container > * {
+    width: 80%;
+    padding-left: 10%;
+  }
+  .inputfile {
+    width: 1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  
+  .inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    width: 40%;
+    color: white;
+    background-color: rgb(173, 157, 8);
+    display: inline-block;
+  }
+  
+  .inputfile:focus + label,
+  .inputfile + label:hover {
+    background-color: rgb(88, 95, 105);
+  }
+  
+  .inputfile + label {
+    cursor: pointer; /* "hand" cursor */
+  }
+  
+  .inputfile:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+  table {
+  width: 100%;
+}
+.mat-cell,
+.mat-header-cell {
+  text-align: center;
+  border-right: 0.5px solid #e0e0e0;
+}
+
+table th {
+  background-color: #b0e0e6;
+  border-color: cadetblue;
+}

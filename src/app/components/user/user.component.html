@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Conducteur</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div class="ion-padding">
+    <h2>Ajouter un utilisateur</h2>
+    <form [formGroup]="userForm" (ngSubmit)="Adduser(userForm)">
+      <mat-card class="example-container ">
+        <div class="example-container">
+          <mat-form-field class="col-md-12 ">
+            <input matInput placeholder="Nom Complet" formControlName="nomComplet">
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="User Name" formControlName="userName">
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="password" formControlName="password">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+          <mat-label>Choisir un role</mat-label>
+          <mat-select formControlName="idRole">
+            <mat-option *ngFor="let role of roles" [value]="role.id">
+              {{role.libelle}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+          <!-- <mat-form-field class="col-sm-6 ">
+            <input matInput placeholder="Societe" formControlName="societe">
+          </mat-form-field> -->
+          <div class="form-row justify-content-end">
+            <ion-button type="submit">Ajouter</ion-button>
+          </div>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</ion-content>

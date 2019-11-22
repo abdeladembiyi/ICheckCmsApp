@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Engins</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="enginForm" (ngSubmit)="AddEngin(enginForm.value)" matSort>
+          <mat-card class="example-container ">
+            <mat-form-field>
+              <input matInput placeholder="Nom de l'engin" formControlName="nomEngin">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Matricule" formControlName="matricule">
+            </mat-form-field>
+
+            <div>
+              <input type="file" id="file" name="file" class="inputfile" #file (change)="upload($event);" />
+              <label for="file"> <i class="fas fa-upload"></i>importer une image </label>
+              <span class="ml-2 h6" *ngIf="fileData">{{fileData.name}}</span>
+            </div>
+            <div class="d-flex justify-content-end mt-2 mb-2 mr-2">
+              <button mat-flat-button color="primary">Ajouter</button>
+            </div>
+          </mat-card>
+
+        </form>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <!--Table des engins-->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ml-2" style="width: 100%">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nomEngin">
+      <th mat-header-cell *matHeaderCellDef> NomEngin </th>
+      <td mat-cell *matCellDef="let element"> {{element.nomEngin}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let element" style="width: 15%;"> <img [src]="createImagePath(element.imageEngin)"
+          width="20px" height="20px" /> </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let row">
+        <button class="form-row justify-content-center" mat-icon-button (click)="onEdit(row)">
+          <mat-icon>Modifier</mat-icon>
+        </button>
+        <!-- <button mat-icon-button color="warn" (click)="onDelete(row.$key)">
+              <mat-icon>delete_outline</mat-icon>
+            </button> -->
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</ion-content>

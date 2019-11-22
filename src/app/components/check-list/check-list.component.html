@@ -1,0 +1,19 @@
+<ion-content>
+  <!-- <app-custom-form [engin]="engin"></app-custom-form> -->
+  <ng-container *ngIf="engin === 'GrueMobile'">
+    <app-grue-mobile></app-grue-mobile>
+  </ng-container>
+  <!-- <ng-container *ngIf="engin === 'MiniPelle'">
+    <app-mini-pelle></app-mini-pelle>
+  </ng-container> -->
+  <ng-container *ngIf="engin === 'Nacelle'">
+    <app-nacelle></app-nacelle>
+  </ng-container>
+  <ng-container *ngIf="engin === 'Camion'">
+    <app-camion></app-camion>
+  </ng-container>
+  <!-- <ng-container *ngIf="engin === 'Benne'">
+    <app-benne></app-benne>
+  </ng-container> -->
+
+</ion-content>

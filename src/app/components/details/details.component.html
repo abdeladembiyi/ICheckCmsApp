@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div id="print-section">
+  <div class="ion-padding">
+    <div class="mb-3">
+      <ion-grid>
+        <ion-row>
+          <ion-col>Date: {{checkListValues?.date | date: 'dd/MM/yyyy'}}</ion-col>
+          <ion-col>Conducteur: {{checkListValues?.conducteur.nomComplet }}</ion-col>
+          <ion-col>Vehicule: {{checkListValues?.vehicule.engin }}</ion-col>
+        </ion-row>
+
+        <ion-row>
+          <!-- <ion-col>ID: {{checkListValues?.id }}</ion-col> -->
+          <ion-col>CIN: {{checkListValues?.conducteur.cin }}</ion-col>
+          <ion-col>Matricule: {{checkListValues?.vehicule.matricule }}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!-- <div class="borderBox">
+      <mat-list *ngFor="let question of questions" [dir]="dir">
+        <h2 class="form-row justify-content-start mr-2">{{question.key}}</h2>
+        <mat-list-item *ngFor="let option of question['options']">
+          <mat-checkbox class="example-margin" [checked]="option.value" disabled>
+            {{option.key}}
+          </mat-checkbox>
+        </mat-list-item>
+      </mat-list> -->
+      
+    <div class="borderBox">
+      <mat-list *ngFor="let question of questions" [dir]="dir">
+        <h2 class="form-row justify-content-start mr-2">{{question.key}}</h2>
+        <mat-list-item *ngFor="let option of question['options']">
+            <span *ngIf="option.value == true ">
+                <button  md-raised-button class="btn btn-success background-button" 
+                disabled><span class="checked">✓</span></button>&nbsp;&nbsp;
+            <span>{{option.key}}</span>
+          </span>
+          <span *ngIf="option.value == false ">
+              <button  md-raised-button class="btn btn-danger background-button"
+              disabled><span class="notChecked">X</span></button>&nbsp;&nbsp;
+          <span>{{option.key}}</span>
+        </span>
+          <!-- <div style="display: inline;">
+                <button mat-mini-fab [ngClass]="{greenButton: option.value, redButton: !option.value}"></button>
+                <label>{{option.key}}</label>
+              </div> -->
+        </mat-list-item>
+      </mat-list>
+      
+    </div>
+    </div>
+  </div>
+    <button mat-raised-button class="mt-2 mb-2"
+        style="position: relative; left: 50%; transform: translateX(-50%);" printSectionId="print-section" ngxPrint>Imprimer</button>
+    
+
+  
+</ion-content>

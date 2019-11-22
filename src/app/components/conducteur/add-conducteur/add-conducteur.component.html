@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Conducteur</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div class="ion-padding">
+    <h2>Ajouter un conducteur</h2>
+    <form [formGroup]="conducteurForm" (ngSubmit)="Addconducteur(conducteurForm)">
+      <mat-card class="example-container ">
+        <div class="example-container">
+          <mat-form-field class="col-md-12 ">
+            <input matInput placeholder="Nom Conducteur" formControlName="nomComplet">
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="CIN" formControlName="cin">
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="CNSS" formControlName="cnss">
+          </mat-form-field>
+          <mat-form-field class="col-sm-6 ">
+            <input matInput placeholder="Societe" formControlName="societe">
+          </mat-form-field><br>
+        
+          <!-- <mat-form-field class="example-full-width">
+            <mat-label>Choisir un permis</mat-label>
+            <mat-select formControlName="idPermis">
+              <mat-option *ngFor="let permi of permis" [value]="permi.id">
+                {{permi.libelle}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <mat-form-field>
+            <mat-label>Choisir un permis</mat-label>
+            <mat-select formControlName="idPermis">
+              <mat-option *ngFor="let permi of permis" [value]="permi.idpermis">
+                {{permi.libelle}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <div class="form-row justify-content-end">
+            <ion-button type="submit">Ajouter</ion-button>
+          </div>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</ion-content>

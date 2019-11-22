@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Check-list
+      <button mat-raised-button (click)="logout()" style="width:7%;float: right;">
+        <ion-icon class="big" slot="start" [src]="logoutIcon"></ion-icon>
+        <!-- <ion-label>Logout</ion-label> -->
+      </button>
+    </ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div>
+    <app-dynamic-form *ngIf="questions && questions.length > 0" [questions]="questions" [engin]="engin">
+    </app-dynamic-form>
+  </div>
+</ion-content>

@@ -1,0 +1,31 @@
+.redButton {
+  background-color: red;
+  width: 15px !important;
+  height: 20px !important;
+}
+
+.greenButton {
+  background-color: green;
+  width: 15px !important;
+  height: 20px !important;
+}
+
+.borderBox {
+    -webkit-box-shadow: -1px 15px 31px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 15px 31px 6px rgba(0,0,0,0.75);
+    box-shadow: -1px 15px 31px 6px rgba(0,0,0,0.75);
+}
+
+.checked {
+  color: green;
+  // font-size: 5%;
+}
+
+.notChecked {
+  color: red;
+  // font-size: 5%;
+}
+
+.background-button {
+  background-color: white;
+}

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Utilisateur</ion-title>
+    <!-- <ion-thumbnail slot="end">
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-thumbnail> -->
+  </ion-toolbar>
+
+</ion-header>
+<!-- <div class="ion-page" main>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Conducteur</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</div> -->
+<ion-content padding="true">
+  <h2>Listes des Utilisateurs</h2>
+  <!--La liste des conducteurs-->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-2" style="margin: auto; width: 90%">
+    <!-- Position Column -->
+    <ng-container matColumnDef="nomcomplet">
+      <th mat-header-cell *matHeaderCellDef> Nom Conducteur </th>
+      <td mat-cell *matCellDef="let element"> {{element.nomComplet}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> UserName </th>
+      <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+    </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Role </th>
+      <td mat-cell *matCellDef="let element"> {{element.IdRoleNavigation.Libelle}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</ion-content>

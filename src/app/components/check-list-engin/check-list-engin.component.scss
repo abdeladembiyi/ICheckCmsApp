@@ -1,0 +1,287 @@
+.isActive {
+  background-color: green;
+}
+
+.isNotActive {
+  background-color: red;
+}
+
+/*@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {}*/
+
+@media only screen and (min-width: 600px) {
+  .button1 {
+    // position: absolute;
+    right: 87px;
+    top: -58px;
+    width: 15px;
+    height: 15px;
+  }
+  .button2 {
+    // position: absolute;
+    right: 207px;
+    top: -20px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button3 {
+    // position: absolute;
+    // left: 0px;
+    top: -5px;
+    right: 222px;
+    width: 15px;
+    height: 15px;
+  }
+  .button4 {
+    // position: absolute;
+    top: 9px;
+    right: 238px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button5 {
+    // position: absolute;
+    top: -30px;
+    right: 484px;
+    width: 15px;
+    height: 15px;
+  }
+  .button6 {
+    // position: absolute;
+    top: -10px;
+    right: 498px;
+    width: 15px;
+    height: 15px;
+  }
+  .button7 {
+    // position: absolute;
+    top: 3px;
+    right: 523px;
+    width: 15px;
+    height: 15px;
+  }
+  .button8 {
+    // position: absolute;
+    left: 72px;
+    top: -68px;
+    // right: 523px;
+    width: 15px;
+    height: 15px;
+  }
+  .button9 {
+    // position: absolute;
+    left: 58px;
+    top: -53px;
+    // right: 537px;
+    width: 15px;
+    height: 15px;
+  }
+  .button10 {
+    // position: absolute;
+    left: 240px;
+    top: -54px;
+    // right: 356px;
+    width: 10px;
+    height: 10px;
+  }
+  .button11 {
+    // position: absolute;
+    left: 231px;
+    top: -30px;
+    // right: 365px;
+    width: 10px;
+    height: 10px;
+  }
+  .button12 {
+    // position: absolute;
+    left: 310px;
+    top: -12px;
+    // right: 287px;
+    width: 10px;
+    height: 10px;
+  }
+  .image {
+    // position: absolute;
+    // left: 620px;
+    height: 230px;
+    // width: 50%;
+    // justify-content: center;
+  }
+}
+
+@media (min-width: 1281px) {
+  .button1 {
+    top: -58px;
+    width: 15px;
+    height: 15px;
+  }
+  .button2 {
+    // position: absolute;
+    right: 207px;
+    top: -20px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button3 {
+    // position: absolute;
+    // left: 0px;
+    top: -5px;
+    right: 222px;
+    width: 15px;
+    height: 15px;
+  }
+  .button4 {
+    // position: absolute;
+    top: 9px;
+    right: 238px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button5 {
+    // position: absolute;
+    top: -30px;
+    right: 484px;
+    width: 15px;
+    height: 15px;
+  }
+  .button6 {
+    // position: absolute;
+    top: -10px;
+    right: 498px;
+    width: 15px;
+    height: 15px;
+  }
+  .button7 {
+    // position: absolute;
+    top: 3px;
+    right: 523px;
+    width: 15px;
+    height: 15px;
+  }
+  .button8 {
+    left: -61%;
+    top: 66px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button9 {
+    // position: absolute;
+    left: -62.4%;
+    top: 81px;
+    // right: 537px;
+    width: 15px;
+    height: 15px;
+  }
+  .button10 {
+    left: -41.15%;
+    top: 80px;
+    width: 15px;
+    height: 15px;
+  }
+  .button11 {
+    // position: absolute;
+    left: -42.9%;
+    top: 100px;
+    // right: 365px;
+    width: 15px;
+    height: 15px;
+  }
+  .button12 {
+    // position: absolute;
+    left: -34.5%;
+    top: 121px;
+    // right: 287px;
+    width: 15px;
+    height: 15px;
+  }
+  .image {
+    // position: absolute;
+    // left: 620px;
+    height: 230px;
+    // width: 50%;
+    // justify-content: center;
+  }
+}
+
+@media (min-width: 1010px) {
+  .button1 {
+    top: -58px;
+    width: 15px;
+    height: 15px;
+  }
+  .button2 {
+    right: 207px;
+    top: -20px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button3 {
+    top: -5px;
+    right: 222px;
+    width: 15px;
+    height: 15px;
+  }
+  .button4 {
+    top: 9px;
+    right: 238px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button5 {
+    top: -30px;
+    right: 484px;
+    width: 15px;
+    height: 15px;
+  }
+  .button6 {
+    top: -10px;
+    right: 498px;
+    width: 15px;
+    height: 15px;
+  }
+  .button7 {
+    top: 3px;
+    right: 523px;
+    width: 15px;
+    height: 15px;
+  }
+  .button8 {
+    left: -82%;
+    top: 68px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .button9 {
+    left: -84.4%;
+    top: 84px;
+    width: 15px;
+    height: 15px;
+  }
+  .button10 {
+    left: 42%;
+    width: 15px;
+    height: 15px;
+  }
+  .button11 {
+    left: 40%;
+    width: 15px;
+    height: 15px;
+  }
+  .button12 {
+    left: 51.4%;
+    top: -13px;
+    // right: 287px;
+    width: 15px;
+    height: 15px;
+  }
+}

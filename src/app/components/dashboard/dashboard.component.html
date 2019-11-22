@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    
+  <ion-grid>
+    <ion-row>
+        <ion-col size="4">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-subtitle>Nombre des camions Controlés</ion-card-subtitle>
+                <ion-card-title>{{Controled}}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+          <ion-col size="4">
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle *ngFor="let block of blockedSite">Nombre des camions Suspendus par le site {{block.label}}{{block.count}}&nbsp;&nbsp;<button class="btn btn-danger" disabled></button></ion-card-subtitle>
+                  <!-- <ion-card-title *ngFor="let block of blockedSite"></ion-card-title> -->
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+            <ion-col size="4">
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-subtitle>Nombre des camions Non Suspendus&nbsp;&nbsp;<button class="btn btn-success" disabled></button></ion-card-subtitle>
+                    <ion-card-title>{{NotBlocked}}</ion-card-title>
+                  </ion-card-header>
+                </ion-card>
+              </ion-col>
+        <ion-col size="12">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Synthese mensuel des camions bloqué. Mois {{dateStats.value | date: 'MM/yyyy'}}</ion-card-title>
+              </ion-card-header>
+    
+              <ion-card-content>
+                <div>
+                  <canvas baseChart *ngIf="lineChartData && lineChartData.length > 0" [datasets]="lineChartData"
+                      [labels]="lineChartLabels" [options]="lineChartOptions"  [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType">
+                  </canvas>
+                  <div *ngIf="messageLineChart">
+                      {{messageLineChart}}
+                  </div>
+              </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-card>
+        <ion-card-content>
+        <legend>Synthese mensuel des camions controlé. Mois {{dateStats.value | date: 'MM/yyyy'}}</legend>
+              <div class="container Chart">
+                  <div class="float-center">
+                      <canvas baseChart *ngIf="barChartData && barChartData.length > 0" [datasets]="barChartData"
+                          [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors" [legend]="barChartLegend" [chartType]="barChartType">
+                      </canvas>
+                  </div>
+              </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Historiques des camions suspendus</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding="true">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
+  </mat-form-field>
+  <!--La liste des camions-->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-2" style="margin: auto; width: 90%">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="vehicule">
+      <th mat-header-cell *matHeaderCellDef> vehicule </th>
+      <td mat-cell *matCellDef="let element"> {{element.idVehiculeNavigation?.matricule}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="dateBlockage">
+      <th mat-header-cell *matHeaderCellDef> date de blockage </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateBlockage | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="motif">
+      <th mat-header-cell *matHeaderCellDef> Motif </th>
+      <td mat-cell *matCellDef="let element"> {{element.motif}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="dateDeblockage">
+      <th mat-header-cell *matHeaderCellDef> date de deblockage </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateDeblockage}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="imageUrl">
+      <th mat-header-cell *matHeaderCellDef> Image </th>
+      <td mat-cell *matCellDef="let element"> {{element.imageUrl}} </td>
+    </ng-container> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</ion-content>

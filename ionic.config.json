@@ -1,0 +1,7 @@
+{
+  "name": "iCheck",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
