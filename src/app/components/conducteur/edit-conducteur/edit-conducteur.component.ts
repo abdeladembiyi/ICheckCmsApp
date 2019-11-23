@@ -30,15 +30,15 @@ export class EditConducteurComponent implements OnInit {
 
   ngOnInit() {
     this.conducteurDataService.currentConducteurDataSource.subscribe();
-    console.log('date assurance: ', this.data.dateValiditeAssurance);
+    // console.log('date assurance: ', this.data.dateValiditeAssurance);
     this.editConducteurForm = this.formBuilder.group({
       nomComplet: [this.data.nomComplet, Validators.required],
       cin: [this.data.cin, Validators.required],
       cnss: [this.data.cnss, Validators.required],
-      assurance: [this.data.assurance, Validators.required],
-      dateValiditeAssurance: [{ value: moment(this.data.dateValiditeAssurance).format('DD/MM/YYYY') }, Validators.required],
-      patente: [this.data.patente, Validators.required],
-      societe: [this.data.societe, Validators.required],
+      numbadge: [this.data.numbadge, Validators.required],
+      // dateValiditeAssurance: [{ value: moment(this.data.dateValiditeAssurance).format('DD/MM/YYYY') }, Validators.required],
+      idPermis: [this.data.idPermis, Validators.required],
+      // societe: [this.data.societe, Validators.required],
     });
   }
 

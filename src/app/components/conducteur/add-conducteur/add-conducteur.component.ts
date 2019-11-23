@@ -23,9 +23,10 @@ export class AddConducteurComponent implements OnInit {
       nomComplet: ['', Validators.required],
       cin: ['', Validators.required],
       cnss: ['', Validators.required],
-      idPermis: ['', Validators.required],
-      // habilitation: [''/*, Validators.required*/],
-      societe: [''/*, Validators.required*/],
+      numBadge: ['', Validators.required],
+      idpermis: ['', Validators.required],
+      societe: ['', Validators.required],
+      
     });
     this.permisService.getPermis().subscribe(res => {
       if (res) {
@@ -44,9 +45,10 @@ export class AddConducteurComponent implements OnInit {
       nomComplet: form.controls['nomComplet'].value,
       cin: form.controls['cin'].value,
       cnss: form.controls['cnss'].value,
-      permis: form.controls['permis'].value,
-      habilitation: form.controls['habilitation'].value,
+      numBadge: form.controls['numBadge'].value,
+      idpermis: form.controls['idpermis'].value,
       societe: form.controls['societe'].value,
+      
     };
     console.log('Data Conducteur: ', data);
 
@@ -58,14 +60,14 @@ export class AddConducteurComponent implements OnInit {
   }
 
   resetform() {
-    this.dateValiditeAssurance.setValue(moment());
+    // this.dateValiditeAssurance.setValue(moment());
     this.conducteurForm.reset();
   }
 
-  change(event)
-  {
-    if(event.isUserInput) {
-      console.log(event.source.value, event.source.selected);
-    }
-  }
+  // change(event)
+  // {
+  //   if(event.isUserInput) {
+  //     console.log(event.source.value, event.source.selected);
+  //   }
+  // }
 }

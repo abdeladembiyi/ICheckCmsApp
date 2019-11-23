@@ -44,8 +44,12 @@
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="permis">
-      <th mat-header-cell *matHeaderCellDef> permis </th>
-      <td mat-cell *matCellDef="let element"> {{element.idpermis}} </td>
+      <th mat-header-cell *matHeaderCellDef> Permis </th>
+      <td mat-cell *matCellDef="let element"> {{element.idpermisNavigation.libelle}} </td>
+    </ng-container>
+    <ng-container matColumnDef="societe">
+      <th mat-header-cell *matHeaderCellDef> Societe </th>
+      <td mat-cell *matCellDef="let element"> {{element.idSocieteNavigation.libelle}} </td>
     </ng-container>
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Action</th>

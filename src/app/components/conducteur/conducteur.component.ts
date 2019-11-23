@@ -13,7 +13,7 @@ import { EditConducteurComponent } from './edit-conducteur/edit-conducteur.compo
 })
 export class ConducteurComponent implements OnInit {
 
-  displayedColumns: string[] = ['nomcomplet', 'cin', 'cnss', 'permis','actions'];
+  displayedColumns: string[] = ['nomcomplet', 'cin', 'cnss', 'permis','societe','actions'];
   dataSource = new MatTableDataSource();
   societeControl = new FormControl();
   searchKey: string;

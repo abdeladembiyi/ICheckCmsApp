@@ -12,7 +12,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 export class ListUserComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['nomcomplet','username','role'];
+  displayedColumns: string[] = ['nomcomplet','username','role','site'];
   dataSource = new MatTableDataSource();
   searchKey: string;
   constructor(private dialog: MatDialog,private service: UserService,

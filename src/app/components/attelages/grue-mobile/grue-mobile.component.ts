@@ -119,7 +119,7 @@ export class GrueMobileComponent implements OnInit {
     this.values['b32'] = false;
 
     this.formConducteur = this.formBuilder.group({
-      cin: ['', Validators.required],
+      numBadge: ['', Validators.required],
       nomComplet: ['', Validators.required],
       matricule: ['', Validators.required]
     });
@@ -140,7 +140,7 @@ export class GrueMobileComponent implements OnInit {
     this.formValues.rating = this.totalRate;
     this.formValues.site = localStorage.getItem('site');
     this.formValues.etat = this.totalRate < 40 ? true : false;
-    this.formValues.conducteur = { cin: form.controls['cin'].value, nomComplet: form.controls['nomComplet'].value };
+    this.formValues.conducteur = { numBadge: form.controls['numBadge'].value, nomComplet: form.controls['nomComplet'].value };
     this.formValues.vehicule = { matricule: form.controls['matricule'].value, engin: 'GrueMobile' };
     this.formValues.catchAll = {
       checklistConducteur: Object.values(this.conducteurCheckList),
@@ -208,7 +208,7 @@ export class GrueMobileComponent implements OnInit {
   }
 
   private filterInitCond() {
-    this.filteredConducteurs = this.formConducteur.controls.cin.valueChanges.pipe(
+    this.filteredConducteurs = this.formConducteur.controls.numBadge.valueChanges.pipe(
       startWith(''),
       map(value => this._filterConducteur(value))
     );
@@ -223,7 +223,7 @@ export class GrueMobileComponent implements OnInit {
   _filterConducteur(value: any): any[] {
     const filterValue = value.toLowerCase();
     // console.log('_filter: ', filterValue);
-    return this.conducteurs.filter(option => option.cin.toLowerCase().includes(filterValue));
+    return this.conducteurs.filter(option => option.numBadge.toLowerCase().includes(filterValue));
   }
 
   _filterVehicule(value: any): any[] {
@@ -234,8 +234,8 @@ export class GrueMobileComponent implements OnInit {
 
   getConducteur(event: MatAutocompleteSelectedEvent) {
     console.log('Selected Option: ', event.option.value);
-    console.log(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
-    this.nomComplet.next(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
+    console.log(this.conducteurs.find(opt => opt.numBadge == event.option.value).nomComplet);
+    this.nomComplet.next(this.conducteurs.find(opt => opt.numBadge == event.option.value).nomComplet);
     this.formConducteur.controls.nomComplet.patchValue(this.nomComplet.value);
   }
 

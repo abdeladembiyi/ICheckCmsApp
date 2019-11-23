@@ -37,7 +37,7 @@ export class NacelleComponent implements OnInit {
   equipementRate = 0;
   enginRate = 0;
   conducteurRate = 0;
-  benneRate = 0;
+  nacelleRate = 0;
   benneImg = Icons.benneImg;
 
 
@@ -71,28 +71,28 @@ export class NacelleComponent implements OnInit {
     this.dataService.currentConducteurRating.subscribe(res => {
       console.log('Conducteur Rating subscribe: ', res);
       this.conducteurRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.benneRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 27;
       this.dataService.changeRatingCheckList(rate);
     });
 
     this.dataService.currentEnginRating.subscribe(res => {
       console.log('Engin Rating subscribe: ', res);
       this.enginRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.benneRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 27;
       this.dataService.changeRatingCheckList(rate);
     });
 
     this.dataService.currentEquipementRating.subscribe(res => {
       console.log('Equipement Rating subscribe: ', res);
       this.equipementRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.benneRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 27;
       this.dataService.changeRatingCheckList(rate);
     });
 
     this.dataService.currentVehiculeRating.subscribe(res => {
       console.log('Vehicule Rating subscribe: ', res);
-      this.benneRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.benneRate) / 27;
+      this.nacelleRate = res;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 27;
       this.dataService.changeRatingCheckList(rate);
     });
 
@@ -112,9 +112,10 @@ export class NacelleComponent implements OnInit {
     this.values['b25'] = false;
     this.values['b26'] = false;
     this.values['b27'] = false;
+    this.values['b28'] = false;
 
     this.formConducteur = this.formBuilder.group({
-      cin: ['', Validators.required],
+      numBadge: ['', Validators.required],
       nomComplet: ['', Validators.required],
       matricule: ['', Validators.required]
     });
@@ -135,8 +136,8 @@ export class NacelleComponent implements OnInit {
     this.formValues.rating = this.totalRate;
     this.formValues.site = localStorage.getItem('site');
     this.formValues.etat = this.totalRate < 40 ? true : false;
-    this.formValues.conducteur = { cin: form.controls['cin'].value, nomComplet: form.controls['nomComplet'].value };
-    this.formValues.vehicule = { matricule: form.controls['matricule'].value, engin: 'Benne' };
+    this.formValues.conducteur = { numBadge: form.controls['numBadge'].value, nomComplet: form.controls['nomComplet'].value };
+    this.formValues.vehicule = { matricule: form.controls['matricule'].value, engin: 'Nacelle' };
     this.formValues.catchAll = {
       checklistConducteur: Object.values(this.conducteurCheckList),
       checklistEquipement: Object.values(this.equipementCheckList),
@@ -174,14 +175,14 @@ export class NacelleComponent implements OnInit {
     if (button.classList.contains('isNotActive')) {
       button.classList.replace('isNotActive', 'isActive');
       this.values[`${buttonID}`] = true;
-      this.benneRate++;
-      this.dataService.changeVehiculeRating(this.benneRate);
+      this.nacelleRate++;
+      this.dataService.changeVehiculeRating(this.nacelleRate);
     } else {
       if (button.classList.contains('isActive')) {
         button.classList.replace('isActive', 'isNotActive');
         this.values[`${buttonID}`] = false;
-        this.benneRate--;
-        this.dataService.changeVehiculeRating(this.benneRate);
+        this.nacelleRate--;
+        this.dataService.changeVehiculeRating(this.nacelleRate);
       }
     }
     console.log('Values: ', this.values)
@@ -196,14 +197,14 @@ export class NacelleComponent implements OnInit {
   }
 
   getAllVehicules() {
-    this.vehiculeService.getAllVehicules('Benne').subscribe(res => {
+    this.vehiculeService.getAllVehicules('Nacelle').subscribe(res => {
       console.log('Vehicules: ', res)
       this.vehicules = res;
     });
   }
 
   private filterInitCond() {
-    this.filteredConducteurs = this.formConducteur.controls.cin.valueChanges.pipe(
+    this.filteredConducteurs = this.formConducteur.controls.numBadge.valueChanges.pipe(
       startWith(''),
       map(value => this._filterConducteur(value))
     );
@@ -220,7 +221,7 @@ export class NacelleComponent implements OnInit {
   _filterConducteur(value: any): any[] {
     const filterValue = value.toLowerCase();
     // console.log('_filter: ', filterValue);
-    return this.conducteurs.filter(option => option.cin.toLowerCase().includes(filterValue));
+    return this.conducteurs.filter(option => option.numBadge.toLowerCase().includes(filterValue));
   }
 
   _filterVehicule(value: any): any[] {
@@ -231,8 +232,8 @@ export class NacelleComponent implements OnInit {
 
   getConducteur(event: MatAutocompleteSelectedEvent) {
     console.log('Selected Option: ', event.option.value);
-    console.log(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
-    this.nomComplet.next(this.conducteurs.find(opt => opt.cin == event.option.value).nomComplet);
+    console.log(this.conducteurs.find(opt => opt.numBadge == event.option.value).nomComplet);
+    this.nomComplet.next(this.conducteurs.find(opt => opt.numBadge == event.option.value).nomComplet);
     this.formConducteur.controls.nomComplet.patchValue(this.nomComplet.value);
   }
 

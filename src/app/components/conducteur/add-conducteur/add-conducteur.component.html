@@ -22,8 +22,11 @@
           <mat-form-field class="col-md-6">
             <input matInput placeholder="CNSS" formControlName="cnss">
           </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="Societé" formControlName="societe">
+          </mat-form-field>
           <mat-form-field class="col-sm-6 ">
-            <input matInput placeholder="Societe" formControlName="societe">
+            <input matInput placeholder="N°Badge" formControlName="numBadge">
           </mat-form-field><br>
         
           <!-- <mat-form-field class="example-full-width">
@@ -36,7 +39,7 @@
           </mat-form-field> -->
           <mat-form-field>
             <mat-label>Choisir un permis</mat-label>
-            <mat-select formControlName="idPermis">
+            <mat-select formControlName="idpermis">
               <mat-option *ngFor="let permi of permis" [value]="permi.idpermis">
                 {{permi.libelle}}
               </mat-option>

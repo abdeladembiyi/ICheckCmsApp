@@ -2,17 +2,17 @@
   <div class="row justify-content-center">
     <form [formGroup]="formConducteur" class="example-form" (ngSubmit)="onSubmit(formConducteur)">
       <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
-        <input type="text" matInput formControlName="cin" placeholder="C.I.N" [matAutocomplete]="cin" />
+        <input type="text" matInput formControlName="numBadge" placeholder="N°Badge" [matAutocomplete]="numBadge" />
       </mat-form-field>
   
-      <mat-autocomplete #cin="matAutocomplete" (optionSelected)="getConducteur($event)">
-        <mat-option *ngFor="let conducteur of (filteredConducteurs | async)" [value]="conducteur.cin">
-          {{conducteur.cin}}</mat-option>
+      <mat-autocomplete #numBadge="matAutocomplete" (optionSelected)="getConducteur($event)">
+        <mat-option *ngFor="let conducteur of (filteredConducteurs | async)" [value]="conducteur.numBadge">
+          {{conducteur.numBadge}}</mat-option>
       </mat-autocomplete>
   
       <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
         <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
-          [value]="formConducteur.controls['cin'].value !== '' ? nomComplet.value : ''" />
+          [value]="formConducteur.controls['numBadge'].value !== '' ? nomComplet.value : ''" />
       </mat-form-field>
   
       <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
