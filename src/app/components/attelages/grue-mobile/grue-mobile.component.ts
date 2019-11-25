@@ -234,8 +234,12 @@ export class GrueMobileComponent implements OnInit {
   _filterVehicule(value: any): any[] {
     const filterValue = value.toLowerCase();
     console.log('_filter: ', filterValue);
-    return this.vehicules.filter(option => option.matricule.includes(filterValue));
-  }
+    return this.vehicules.filter(option =>{
+      if(option.matricule !== null){
+      option.matricule.toLowerCase().includes(filterValue);
+      }
+  });
+}
 
   getConducteur(event: MatAutocompleteSelectedEvent) {
     console.log('Selected Option: ', event.option.value);
