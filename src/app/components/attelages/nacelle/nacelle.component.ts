@@ -58,11 +58,6 @@ export class NacelleComponent implements OnInit {
       this.conducteurCheckList = res;
     });
 
-    this.dataService.currentEnginCheckList.subscribe(res => {
-      console.log('Engin Subscribe', this.enginCheckList);
-      this.enginCheckList = res;
-    });
-
     this.dataService.currentEquipementCheckList.subscribe(res => {
       console.log('Equipement Subscribe', this.equipementCheckList);
       this.equipementCheckList = res;
@@ -71,28 +66,21 @@ export class NacelleComponent implements OnInit {
     this.dataService.currentConducteurRating.subscribe(res => {
       console.log('Conducteur Rating subscribe: ', res);
       this.conducteurRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 27;
-      this.dataService.changeRatingCheckList(rate);
-    });
-
-    this.dataService.currentEnginRating.subscribe(res => {
-      console.log('Engin Rating subscribe: ', res);
-      this.enginRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 15;
       this.dataService.changeRatingCheckList(rate);
     });
 
     this.dataService.currentEquipementRating.subscribe(res => {
       console.log('Equipement Rating subscribe: ', res);
       this.equipementRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 15;
       this.dataService.changeRatingCheckList(rate);
     });
 
     this.dataService.currentVehiculeRating.subscribe(res => {
       console.log('Vehicule Rating subscribe: ', res);
       this.nacelleRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.nacelleRate) / 15;
       this.dataService.changeRatingCheckList(rate);
     });
 
@@ -107,12 +95,12 @@ export class NacelleComponent implements OnInit {
     this.dataService.currentBlockageID.subscribe(res => console.log('Blockage ID: ', res));
     this.dataService.currentCheckListID.subscribe(res => console.log('CheckList ID: ', res));
 
-    this.values['b23'] = false;
-    this.values['b24'] = false;
-    this.values['b25'] = false;
-    this.values['b26'] = false;
-    this.values['b27'] = false;
-    this.values['b28'] = false;
+    this.values['b10'] = false;
+    this.values['b11'] = false;
+    this.values['b12'] = false;
+    this.values['b13'] = false;
+    this.values['b14'] = false;
+    this.values['b15'] = false;
 
     this.formConducteur = this.formBuilder.group({
       numBadge: ['', Validators.required],
@@ -141,7 +129,7 @@ export class NacelleComponent implements OnInit {
     this.formValues.catchAll = {
       checklistConducteur: Object.values(this.conducteurCheckList),
       checklistEquipement: Object.values(this.equipementCheckList),
-      checklistEngin: Object.values(this.enginCheckList),
+      // checklistEngin: Object.values(this.enginCheckList),
       checklistAttelage: Object.values(this.values)
     };
     console.log('Form: ', this.formValues);

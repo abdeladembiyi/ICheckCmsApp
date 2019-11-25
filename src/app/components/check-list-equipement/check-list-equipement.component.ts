@@ -16,11 +16,11 @@ export class CheckListEquipementComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.values['b5'] = false;
     this.values['b6'] = false;
     this.values['b7'] = false;
     this.values['b8'] = false;
     this.values['b9'] = false;
-    this.values['b10'] = false;
     this.dataService.currentEquipementCheckList.subscribe();
     this.dataService.changeEquipementCheckList(this.values);
     this.dataService.currentEquipementRating.subscribe();

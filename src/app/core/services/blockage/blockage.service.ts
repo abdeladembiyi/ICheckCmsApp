@@ -15,10 +15,12 @@ export class BlockageService {
   updateBlockage(id, data) {
     return this.http.put(`${Constants.api}blockages/${id}`, data);
   }
-  deblocked(id){
+
+  deblocked(id) {
     return this.http.get(`${Constants.api}blockages/debloquage/${id}`);
   }
-  blocked(id){
+  
+  blocked(id) {
     return this.http.get(`${Constants.api}blockages/bloquage/${id}`);
   }
 }

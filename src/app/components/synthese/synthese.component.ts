@@ -3,8 +3,8 @@ import { MatTableDataSource } from '@angular/material';
 import { CheckListRefService } from 'src/app/core/services/checkListRef/check-list-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import * as moment from  'moment';
-import { faFilter, faSyncAlt, faBan, faCircle  } from '@fortawesome/free-solid-svg-icons';
+import * as moment from 'moment';
+import { faFilter, faSyncAlt, faBan, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { BlockageService } from 'src/app/core/services/blockage/blockage.service';
 
 
@@ -14,8 +14,8 @@ import { BlockageService } from 'src/app/core/services/blockage/blockage.service
   styleUrls: ['./synthese.component.scss'],
 })
 export class SyntheseComponent implements OnInit, AfterViewInit {
-  
-  displayedColumns: string[] = ['id', 'date', 'conducteur', 'vehicule', 'engin', 'etat', 'rating', 'action'];
+
+  displayedColumns: string[] = ['id', 'date', 'conducteur', 'permis', 'vehicule', 'engin', 'etat', 'rating', 'action'];
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());
@@ -27,19 +27,19 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
 
   oldDataSource;
   de; ds;
-  
-  constructor(private checkListRefService: CheckListRefService, 
-            private router: Router,
-            private activatedRoute: ActivatedRoute,
-            private service:BlockageService) { }
+
+  constructor(private checkListRefService: CheckListRefService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private service: BlockageService) { }
 
   ngOnInit() {
     this.getAllCheckListRef();
   }
 
-  getAllCheckListRef(){
-    this.checkListRefService.getAllCheckListRef().subscribe((res: any)   => {
-      console.log(res);
+  getAllCheckListRef() {
+    this.checkListRefService.getAllCheckListRef().subscribe((res: any) => {
+      console.log('CheckRefs: ', res);
       this.dataSource.data = res;
       this.oldDataSource = this.dataSource.data;
       this.data = <any[]>this.dataSource.data;
@@ -108,24 +108,24 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
     this.dataSource.data = this.oldDataSource;
   }
 
-  deblocked(id) {
-    if (confirm('Debloquer ?')) {
-      console.log('debloquage ID: ', id);
-      this.service.deblocked(id).subscribe(res => {
-        this.getAllCheckListRef();
-        console.log('debloquage Ok', res);
-      },
-        err => console.log(err));
+  blocked(element, operation) {
+    if (confirm('Etes vous sûr, veuillez confirmer pour accomplir l\'opération ?')) {
+      const data = {
+        id: element.id,
+        idCheckListRef: element.idCheckListRef,
+        rating: element.rating,
+        date: element.date,
+        idConducteur: element.idConducteur,
+        idVehicule: element.idVehicule,
+        etat: operation === 'lock' ? true : false
+      }; 
+
+      this.checkListRefService.updateCheckList(data.id, data).subscribe(res => {
+        console.log('Update Checklist ref', res);
+      });
+      element.etat = operation === 'lock' ? true : false
     }
-  }
-  blocked(id){
-    if (confirm('bloquer ?')) {
-      console.log('debloquage ID: ', id);
-      this.service.blocked(id).subscribe(res => {
-        this.getAllCheckListRef();
-        console.log('blaquage Ok', res);
-      },
-        err => console.log(err));
-    }
+    // console.log(`Element: , operation: ${operation}`, element);
+
   }
 }

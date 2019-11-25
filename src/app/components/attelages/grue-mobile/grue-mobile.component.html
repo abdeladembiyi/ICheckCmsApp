@@ -1,48 +1,48 @@
 <!-- <div class="container"> -->
-  <div class="row justify-content-center">
-    <form [formGroup]="formConducteur" class="example-form" (ngSubmit)="onSubmit(formConducteur)">
-      <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
-        <input type="text" matInput formControlName="numBadge" placeholder="N°Badge" [matAutocomplete]="numBadge" />
-      </mat-form-field>
-  
-      <mat-autocomplete #numBadge="matAutocomplete" (optionSelected)="getConducteur($event)">
-        <mat-option *ngFor="let conducteur of (filteredConducteurs | async)" [value]="conducteur.numBadge">
-          {{conducteur.numBadge}}</mat-option>
-      </mat-autocomplete>
-  
-      <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
-        <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
-          [value]="formConducteur.controls['numBadge'].value !== '' ? nomComplet.value : ''" />
-      </mat-form-field>
-  
-      <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
-        <input type="text" matInput formControlName="matricule" placeholder="Matricule" [matAutocomplete]="matricule" />
-      </mat-form-field>
-  
-      <mat-autocomplete #matricule="matAutocomplete">
-        <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
-          {{vehicule.matricule}}</mat-option>
-      </mat-autocomplete>
-      <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
-      <button mat-raised-button type="submit">Envoyer</button>
-    </form>
-  </div>
-  <!-- <app-check-list-engin></app-check-list-engin> -->
-  <app-check-list-conducteur></app-check-list-conducteur>
-  <app-check-list-equipement></app-check-list-equipement>
-  <span style="float: left;margin-left: 20px;">
-    <img class="image2" src="../../../../assets/images/grueMobile.jpg">
-    <button mat-mini-fab id="b23" (click)="check(23)" class="button1 isNotActive"></button>
-    <button mat-mini-fab id="b24" (click)="check(24)" class="button2 isNotActive"></button>
-    <button mat-mini-fab id="b25" (click)="check(25)" class="button3 isNotActive"></button>
-    <button mat-mini-fab id="b26" (click)="check(26)" class="button4 isNotActive"></button>
-   <button mat-mini-fab id="b27" (click)="check(27)" class="button5 isNotActive"></button>
-   <button mat-mini-fab id="b28" (click)="check(28)" class="button6 isNotActive"></button>
-   <button mat-mini-fab id="b29" (click)="check(29)" class="button7 isNotActive"></button>
-    <button mat-mini-fab id="b30" (click)="check(30)" class="button8 isNotActive"></button>
-   <button mat-mini-fab id="b31" (click)="check(31)" class="button9 isNotActive"></button>
-   <button mat-mini-fab id="b32" (click)="check(32)" class="button10 isNotActive"></button>
+<div class="row justify-content-center">
+  <form [formGroup]="formConducteur" class="example-form" (ngSubmit)="onSubmit(formConducteur)">
+    <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
+      <input type="text" matInput formControlName="numBadge" placeholder="N°Badge" [matAutocomplete]="numBadge" />
+    </mat-form-field>
 
-  </span>
-  
-  <!-- </div> -->
+    <mat-autocomplete #numBadge="matAutocomplete" (optionSelected)="getConducteur($event)">
+      <mat-option *ngFor="let conducteur of (filteredConducteurs | async)" [value]="conducteur.numBadge">
+        {{conducteur.numBadge}}</mat-option>
+    </mat-autocomplete>
+
+    <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
+      <input type="text" matInput formControlName="nomComplet" placeholder="Nom Complet"
+        [value]="formConducteur.controls['numBadge'].value !== '' ? nomComplet.value : ''" />
+    </mat-form-field>
+
+    <mat-form-field style="text-align: left" dir="ltr" class="mr-2">
+      <input type="text" matInput formControlName="matricule" placeholder="Matricule" [matAutocomplete]="matricule" />
+    </mat-form-field>
+
+    <mat-autocomplete #matricule="matAutocomplete">
+      <mat-option *ngFor="let vehicule of (filteredVehicules | async)" [value]="vehicule.matricule">
+        {{vehicule.matricule}}</mat-option>
+    </mat-autocomplete>
+    <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
+    <button mat-raised-button type="submit">Envoyer</button>
+  </form>
+</div>
+<app-check-list-conducteur></app-check-list-conducteur>
+<app-check-list-equipement></app-check-list-equipement>
+
+<span style="float: left;margin-left: 20px;">
+  <img class="image2" src="../../../../assets/images/grueMobile.jpg">
+  <button mat-mini-fab id="b10" (click)="check(10)" class="button1 isNotActive"></button>
+  <button mat-mini-fab id="b11" (click)="check(11)" class="button2 isNotActive"></button>
+  <button mat-mini-fab id="b12" (click)="check(12)" class="button3 isNotActive"></button>
+  <button mat-mini-fab id="b13" (click)="check(13)" class="button4 isNotActive"></button>
+  <button mat-mini-fab id="b14" (click)="check(14)" class="button5 isNotActive"></button>
+  <button mat-mini-fab id="b15" (click)="check(15)" class="button6 isNotActive"></button>
+  <button mat-mini-fab id="b16" (click)="check(16)" class="button7 isNotActive"></button>
+  <button mat-mini-fab id="b17" (click)="check(17)" class="button8 isNotActive"></button>
+  <button mat-mini-fab id="b18" (click)="check(18)" class="button9 isNotActive"></button>
+  <button mat-mini-fab id="b19" (click)="check(19)" class="button10 isNotActive"></button>
+
+</span>
+
+<!-- </div> -->

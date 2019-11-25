@@ -71,28 +71,28 @@ export class GrueMobileComponent implements OnInit {
     this.dataService.currentConducteurRating.subscribe(res => {
       console.log('Conducteur Rating subscribe: ', res);
       this.conducteurRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.grueMobileRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.grueMobileRate) / 19;
       this.dataService.changeRatingCheckList(rate);
     });
 
     this.dataService.currentEnginRating.subscribe(res => {
       console.log('Engin Rating subscribe: ', res);
       this.enginRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.grueMobileRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.grueMobileRate) / 19;
       this.dataService.changeRatingCheckList(rate);
     });
 
     this.dataService.currentEquipementRating.subscribe(res => {
       console.log('Equipement Rating subscribe: ', res);
       this.equipementRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.grueMobileRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.grueMobileRate) / 19;
       this.dataService.changeRatingCheckList(rate);
     });
 
     this.dataService.currentVehiculeRating.subscribe(res => {
       console.log('Vehicule Rating subscribe: ', res);
       this.grueMobileRate = res;
-      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.grueMobileRate) / 27;
+      const rate = (this.conducteurRate + this.enginRate + this.equipementRate + this.grueMobileRate) / 19;
       this.dataService.changeRatingCheckList(rate);
     });
 
@@ -107,16 +107,16 @@ export class GrueMobileComponent implements OnInit {
     this.dataService.currentBlockageID.subscribe(res => console.log('Blockage ID: ', res));
     this.dataService.currentCheckListID.subscribe(res => console.log('CheckList ID: ', res));
 
-    this.values['b23'] = false;
-    this.values['b24'] = false;
-    this.values['b25'] = false;
-    this.values['b26'] = false;
-    this.values['b27'] = false;
-    this.values['b28'] = false;
-    this.values['b29'] = false;
-    this.values['b30'] = false;
-    this.values['b31'] = false;
-    this.values['b32'] = false;
+    this.values['b10'] = false;
+    this.values['b11'] = false;
+    this.values['b12'] = false;
+    this.values['b13'] = false;
+    this.values['b14'] = false;
+    this.values['b15'] = false;
+    this.values['b16'] = false;
+    this.values['b17'] = false;
+    this.values['b18'] = false;
+    this.values['b19'] = false;
 
     this.formConducteur = this.formBuilder.group({
       numBadge: ['', Validators.required],

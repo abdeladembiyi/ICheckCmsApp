@@ -8,71 +8,86 @@
 </ion-header>
 
 <ion-content>
-    
+
   <ion-grid>
-    <ion-row >
-        <ion-title><ion-icon style="zoom:6.0;" [src]="truck"></ion-icon></ion-title>
-        <ion-col size="12" class="row justify-content-center">
-            <ion-title><span  style="font-size: 20px;">Nombre totals des engins Controlés :</span>&nbsp;&nbsp;<span class="badge badge-primary">{{Controled}}</span></ion-title>
-            
-          </ion-col>
-        <ion-col size="4" >
-            <ion-card >
-                <ion-card-header>
-                <ion-card-title>
-                  <span class="badge badge-warning" style="font-size: 12px;">Nombre des engins Controlés par site :</span></ion-card-title>
-                <ion-icon style="zoom:4.0;" [src]="truck"></ion-icon>
-                <ion-card-title *ngFor="let control of controledSite">&nbsp;&nbsp;<span class="badge badge-secondary" >{{control.label}}</span>&nbsp;&nbsp;<span class="badge badge-primary" >{{control.count}}</span></ion-card-title>
-              </ion-card-header>
-            </ion-card>
-          </ion-col>
-          <ion-col size="4">
-              <ion-card>
-                <ion-card-header>
-                    <ion-card-title><span class="badge badge-warning" style="font-size: 12px;">Nombre des engins Suspendus par site : </span></ion-card-title>
-                    <ion-icon style="zoom:4.0;" [src]="truck"></ion-icon>
-                  <ion-card-title *ngFor="let block of blockedSite"><span class="badge badge-secondary"> {{block.label}}</span>&nbsp;&nbsp;<span class="badge badge-danger" >{{block.count}}</span></ion-card-title>
-                  
-                </ion-card-header>
-              </ion-card>
-            </ion-col>
-            <ion-col size="4">
-                <ion-card>
-                  <ion-card-header >
-                      <ion-card-title><span class="badge badge-warning" style="font-size: 12px;">Nombre des engins Non Suspendus par site :</span></ion-card-title>
-                      <ion-icon style="zoom:4.0;" [src]="truck"></ion-icon>
-                    <ion-card-title *ngFor="let notblock of notBlockedSite"><span class="badge badge-secondary">{{notblock.label}}</span>&nbsp;&nbsp;<span class="badge badge-success" >{{notblock.count}}</span></ion-card-title>
-                  </ion-card-header>
-                </ion-card>
-              </ion-col>
-        <ion-col size="12">
-            <ion-card>
-              <ion-card-header>
-                <ion-card-title>Synthese mensuel des engins bloqué. Mois {{dateStats.value | date: 'MM/yyyy'}}</ion-card-title>
-              </ion-card-header>
-    
-              <ion-card-content>
-                <div>
-                  <canvas baseChart *ngIf="lineChartData && lineChartData.length > 0" [datasets]="lineChartData"
-                      [labels]="lineChartLabels" [options]="lineChartOptions"  [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType">
-                  </canvas>
-                  <div *ngIf="messageLineChart">
-                      {{messageLineChart}}
-                  </div>
+    <ion-row>
+      <!-- <ion-title><ion-icon style="zoom:6.0;" [src]="truck"></ion-icon></ion-title> -->
+      <ion-col size="12" class="row justify-content-center">
+        <ion-title>
+          <span style="font-size: 20px;" class="mr-2">Nombre totals des engins Controlés :</span>
+          <span class="badge badge-primary">{{Controled}}</span>
+        </ion-title>
+
+      </ion-col>
+      <ion-col size="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <span class="badge badge-warning" style="font-size: 12px;">Nombre des engins Controlés par site :</span>
+            </ion-card-title>
+            <ion-icon style="zoom:4.0;" [src]="truck"></ion-icon>
+            <ion-card-title *ngFor="let control of controledSite">&nbsp;&nbsp;<span
+                class="badge badge-secondary">{{control.label}}</span>&nbsp;&nbsp;<span
+                class="badge badge-primary">{{control.count}}</span></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title><span class="badge badge-warning" style="font-size: 12px;">Nombre des engins Suspendus par
+                site : </span></ion-card-title>
+            <ion-icon style="zoom:4.0;" [src]="truck"></ion-icon>
+            <ion-card-title *ngFor="let block of blockedSite"><span class="badge badge-secondary">
+                {{block.label}}</span>&nbsp;&nbsp;<span class="badge badge-danger">{{block.count}}</span>
+            </ion-card-title>
+
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title><span class="badge badge-warning" style="font-size: 12px;">Nombre des engins Non Suspendus
+                par site :</span></ion-card-title>
+            <ion-icon style="zoom:4.0;" [src]="truck"></ion-icon>
+            <ion-card-title *ngFor="let notblock of notBlockedSite"><span
+                class="badge badge-secondary">{{notblock.label}}</span>&nbsp;&nbsp;<span
+                class="badge badge-success">{{notblock.count}}</span></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Synthese mensuel des engins bloqué. Mois {{dateStats.value | date: 'MM/yyyy'}}
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div>
+              <canvas baseChart *ngIf="lineChartData && lineChartData.length > 0" [datasets]="lineChartData"
+                [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                [legend]="lineChartLegend" [chartType]="lineChartType">
+              </canvas>
+              <div *ngIf="messageLineChart">
+                {{messageLineChart}}
               </div>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-          <ion-card>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-card>
         <ion-card-content>
-        <legend>Synthese mensuel des engins controlé. Mois {{dateStats.value | date: 'MM/yyyy'}}</legend>
-              <div class="container Chart">
-                  <div class="float-center">
-                      <canvas baseChart *ngIf="barChartData && barChartData.length > 0" [datasets]="barChartData"
-                          [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors" [legend]="barChartLegend" [chartType]="barChartType">
-                      </canvas>
-                  </div>
-              </div>
+          <legend>Synthese mensuel des engins controlé. Mois {{dateStats.value | date: 'MM/yyyy'}}</legend>
+          <div class="container Chart">
+            <div class="float-center">
+              <canvas baseChart *ngIf="barChartData && barChartData.length > 0" [datasets]="barChartData"
+                [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors"
+                [legend]="barChartLegend" [chartType]="barChartType">
+              </canvas>
+            </div>
+          </div>
         </ion-card-content>
       </ion-card>
     </ion-row>

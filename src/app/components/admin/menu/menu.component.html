@@ -41,7 +41,7 @@
               <ion-icon class="big" [src]="p.icon" slot="start"></ion-icon>
               <ion-icon slot="end" name="arrow-dropright" *ngIf="p.children?.length > 0 && !p.open"></ion-icon>
               <ion-icon slot="end" name="arrow-dropdown" *ngIf="p.open"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+              <ion-label class="ion-text-wrap">{{ p.title }}</ion-label>
             </ion-item>
           </ng-container>
 

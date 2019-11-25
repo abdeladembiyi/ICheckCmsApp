@@ -13,5 +13,9 @@ export class CheckListRefService {
     return this.http.get(`${Constants.api}checklistrefs`);
   }
 
+  updateCheckList(id, checklist) {
+    return this.http.put(`${Constants.api}checklistrefs/${id}`, checklist);
+  }
+
   
 }
