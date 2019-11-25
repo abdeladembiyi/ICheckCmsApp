@@ -223,14 +223,22 @@ export class GrueMobileComponent implements OnInit {
   _filterConducteur(value: any): any[] {
     const filterValue = value.toLowerCase();
     // console.log('_filter: ', filterValue);
-    return this.conducteurs.filter(option => option.numBadge.toLowerCase().includes(filterValue));
+    return this.conducteurs.filter(option => {
+      if(option.numBadge !== null) {
+        return option.numBadge.toLowerCase().includes(filterValue);
+      }
+    });
   }
 
   _filterVehicule(value: any): any[] {
     const filterValue = value.toLowerCase();
     console.log('_filter: ', filterValue);
-    return this.vehicules.filter(option => option.matricule.includes(filterValue));
-  }
+    return this.vehicules.filter(option =>{
+      if(option.matricule !== null){
+      option.matricule.toLowerCase().includes(filterValue);
+      }
+  });
+}
 
   getConducteur(event: MatAutocompleteSelectedEvent) {
     console.log('Selected Option: ', event.option.value);

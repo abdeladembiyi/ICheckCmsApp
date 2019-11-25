@@ -15,8 +15,8 @@ export class DetailsComponent implements OnInit {
   dir = "rtl";
   keys1 = [];
   keys2 = [];
-  // keys3 = [];
-  keys4 = [];
+   keys3 = [];
+  //keys4 = [];
 
   checkListValues;
 
@@ -37,8 +37,8 @@ export class DetailsComponent implements OnInit {
         if (checklist) {
           switch (checklist['vehicule'].engin) {
             case 'GrueMobile': this.getQuestionForAttelage(checklist); break;
-            case 'Citerne': this.getQuestionForAttelage(checklist); break;
-            case 'Plateau': this.getQuestionForAttelage(checklist); break;
+            case 'Nacelle': this.getQuestionForAttelage(checklist); break;
+            case 'Camion': this.getQuestionForAttelage(checklist); break;
             default: /*this.getQuestionForEngins(checklist);*/ break;
           }
         }
@@ -54,8 +54,8 @@ export class DetailsComponent implements OnInit {
       console.log('Res: ', res);
       let controle1 = 'مراقبة الحالة العامة للسائق';
       let controle2 = 'مراقبة حالة المعدات';
-      // let controle3 = 'مراقبة الحالة العامة للعربة';
-      let controle4 = 'مراقبة الحالة العامة للعربة';
+      let controle3 = 'مراقبة الحالة العامة للعربة';
+      //let controle4 = 'مراقبة الحالة العامة للعربة';
 
       res.forEach(element => {
         if (element.key === controle1) {
@@ -70,18 +70,18 @@ export class DetailsComponent implements OnInit {
           console.log('Keys 2: ', this.keys2);
           this.questions[1]['options'] = this.keys2;
         }
-        // if (element.key === controle3) {
-        //   console.log(checklist['catchAll'][controle3]);
-        //   this.keys3 = this.arrayToJson(element['options'], checklist['catchAll']['checklistEngin']);
-        //   console.log('Keys 3: ', this.keys3);
-        //   this.questions[2]['options'] = this.keys3;
-        // }
-        if (element.key === controle4) {
-          console.log(checklist['catchAll'][controle4]);
-          this.keys4 = this.arrayToJson(element['options'], checklist['catchAll']['checklistAttelage']);
-          console.log('Keys 4: ', this.keys4);
-          this.questions[3]['options'] = this.keys4;
+        if (element.key === controle3) {
+          console.log(checklist['catchAll'][controle3]);
+          this.keys3 = this.arrayToJson(element['options'], checklist['catchAll']['checklistAttelage']);
+          console.log('Keys 3: ', this.keys3);
+          this.questions[2]['options'] = this.keys3;
         }
+        // if (element.key === controle4) {
+        //   console.log(checklist['catchAll'][controle4]);
+        //   this.keys4 = this.arrayToJson(element['options'], checklist['catchAll']['checklistAttelage']);
+        //   console.log('Keys 4: ', this.keys4);
+        //   this.questions[3]['options'] = this.keys4;
+        // }
         console.log('Question ', this.questions);
       });
     });
