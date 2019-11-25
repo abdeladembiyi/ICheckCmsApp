@@ -4,23 +4,11 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Conducteur</ion-title>
-    <!-- <ion-thumbnail slot="end">
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-    </ion-thumbnail> -->
   </ion-toolbar>
 
 </ion-header>
-<!-- <div class="ion-page" main>
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Conducteur</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</div> -->
-<ion-content padding="true">
+
+<ion-content class="ion-padding">
   <h2>Listes des conducteurs</h2>
   <!--La liste des conducteurs-->
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-2" style="margin: auto; width: 90%">
@@ -45,11 +33,11 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="permis">
       <th mat-header-cell *matHeaderCellDef> Permis </th>
-      <td mat-cell *matCellDef="let element"> {{element.idpermisNavigation.libelle}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.permis}} </td>
     </ng-container>
     <ng-container matColumnDef="societe">
       <th mat-header-cell *matHeaderCellDef> Societe </th>
-      <td mat-cell *matCellDef="let element"> {{element.idSocieteNavigation.libelle}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.societe}} </td>
     </ng-container>
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Action</th>

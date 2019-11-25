@@ -1,5 +1,49 @@
 .image2 {
-    margin-top: -350px;
+  margin-top: -350px;
+  height: 340px;
+}
+.button1 {
+  //   position: absolute;
+  right: 250px;
+  top: -252px;
+  width: 12px;
+  height: 12px;
+}
+.button2 {
+  top: -32px;
+  right: 288px;
+  width: 12px;
+  height: 12px;
+}
+.button3 {
+  top: -200px;
+  right: 377px;
+  width: 12px;
+  height: 12px;
+}
+.button4 {
+  top: -225px;
+  right: 392px;
+  width: 12px;
+  height: 12px;
+}
+.button5 {
+  top: -302px;
+  right: 90px;
+  width: 12px;
+  height: 12px;
+}
+.isActive {
+  background-color: green;
+}
+
+.isNotActive {
+  background-color: red;
+}
+
+
+@media only screen and (width: 1280px) {
+  .image2 {
     height: 340px;
   }
   .button1 {
@@ -27,16 +71,10 @@
     width: 12px;
     height: 12px;
   }
-  .button5{
+  .button5 {
     top: -302px;
     right: 90px;
     width: 12px;
     height: 12px;
   }
-  .isActive {
-    background-color: green;
-  }
-  
-  .isNotActive {
-    background-color: red;
-  }
+}
