@@ -15,8 +15,8 @@ export class DetailsComponent implements OnInit {
   dir = "rtl";
   keys1 = [];
   keys2 = [];
-  // keys3 = [];
-  keys4 = [];
+  keys3 = [];
+  // keys4 = [];
 
   checkListValues;
 
@@ -37,9 +37,9 @@ export class DetailsComponent implements OnInit {
         if (checklist) {
           switch (checklist['vehicule'].engin) {
             case 'GrueMobile': this.getQuestionForAttelage(checklist); break;
-            case 'Citerne': this.getQuestionForAttelage(checklist); break;
+            case 'Camion': this.getQuestionForAttelage(checklist); break;
             case 'Plateau': this.getQuestionForAttelage(checklist); break;
-            default: /*this.getQuestionForEngins(checklist);*/ break;
+            // default: /*this.getQuestionForEngins(checklist);*/ break;
           }
         }
       })
@@ -48,18 +48,19 @@ export class DetailsComponent implements OnInit {
   }
 
   getQuestionForAttelage(checklist) {
-    console.log('engin :',checklist['vehicule'].engin)
+    // console.log('engin :', checklist['vehicule'].engin)
     this.questionService.getQuestionsForAttelages(checklist['vehicule'].engin).then(res => {
       this.questions = res;
-      console.log('Res: ', res);
+      // console.log('Res: ', res);
       let controle1 = 'مراقبة الحالة العامة للسائق';
       let controle2 = 'مراقبة حالة المعدات';
       // let controle3 = 'مراقبة الحالة العامة للعربة';
-      let controle4 = 'مراقبة الحالة العامة للعربة';
-
+      let controle3 = 'مراقبة الحالة العامة للعربة';
+      console.log('CatchAll: ', checklist['catchAll']);
       res.forEach(element => {
+        // console.log('Elements: ', element);
         if (element.key === controle1) {
-          console.log(checklist['catchAll'][controle1]);
+          // console.log(checklist['catchAll'][controle1]);
           this.keys1 = this.arrayToJson(element['options'], checklist['catchAll']['checklistConducteur']);
           console.log('Keys 1: ', this.keys1);
           this.questions[0]['options'] = this.keys1;
@@ -76,11 +77,11 @@ export class DetailsComponent implements OnInit {
         //   console.log('Keys 3: ', this.keys3);
         //   this.questions[2]['options'] = this.keys3;
         // }
-        if (element.key === controle4) {
-          console.log(checklist['catchAll'][controle4]);
-          this.keys4 = this.arrayToJson(element['options'], checklist['catchAll']['checklistAttelage']);
-          console.log('Keys 4: ', this.keys4);
-          this.questions[3]['options'] = this.keys4;
+        if (element.key === controle3) {
+          console.log(checklist['catchAll'][controle3]);
+          this.keys3 = this.arrayToJson(element['options'], checklist['catchAll']['checklistAttelage']);
+          console.log('Keys 3: ', this.keys3);
+          this.questions[3]['options'] = this.keys3;
         }
         console.log('Question ', this.questions);
       });
@@ -118,12 +119,12 @@ export class DetailsComponent implements OnInit {
       });
     });
   }
-  
+
   arrayToJson(options: any = [], values: any = []): any[] {
     let index = 0;
     let keys = [];
     options.forEach(elt => {
-      let js = {key: elt.key, value: values[index]};
+      let js = { key: elt.key, value: values[index] };
       keys.push(js);
       index++;
     });

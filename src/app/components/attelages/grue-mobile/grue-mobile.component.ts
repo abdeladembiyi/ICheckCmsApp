@@ -220,10 +220,15 @@ export class GrueMobileComponent implements OnInit {
       map(value => this._filterVehicule(value))
     )
   }
+  
   _filterConducteur(value: any): any[] {
     const filterValue = value.toLowerCase();
     // console.log('_filter: ', filterValue);
-    return this.conducteurs.filter(option => option.numBadge.toLowerCase().includes(filterValue));
+    return this.conducteurs.filter(option => {
+      if(option.numBadge !== null) {
+        return option.numBadge.toLowerCase().includes(filterValue);
+      }
+    });
   }
 
   _filterVehicule(value: any): any[] {

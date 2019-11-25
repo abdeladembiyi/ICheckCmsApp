@@ -10,49 +10,54 @@
 
 <ion-content class="ion-padding">
   <h2>Listes des conducteurs</h2>
-  <!--La liste des conducteurs-->
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-2" style="margin: auto; width: 90%">
-    <!-- Position Column -->
-    <ng-container matColumnDef="nomcomplet">
-      <th mat-header-cell *matHeaderCellDef> Nom Conducteur </th>
-      <td mat-cell *matCellDef="let element"> {{element.nomComplet}} </td>
-    </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="cin">
-      <th mat-header-cell *matHeaderCellDef> CIN </th>
-      <td mat-cell *matCellDef="let element"> {{element.cin}} </td>
-    </ng-container>
+  <div class="mat-elevation-z8">
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="cnss">
-      <th mat-header-cell *matHeaderCellDef> CNSS </th>
-      <td mat-cell *matCellDef="let element"> {{element.cnss}} </td>
-    </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="permis">
-      <th mat-header-cell *matHeaderCellDef> Permis </th>
-      <td mat-cell *matCellDef="let element"> {{element.permis}} </td>
-    </ng-container>
-    <ng-container matColumnDef="societe">
-      <th mat-header-cell *matHeaderCellDef> Societe </th>
-      <td mat-cell *matCellDef="let element"> {{element.societe}} </td>
-    </ng-container>
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Action</th>
-      <td mat-cell *matCellDef="let row">
-        <button class="form-row justify-content-center" mat-icon-button (click)="onEdit(row)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <!-- <button mat-icon-button color="warn" (click)="onDelete(row.$key)">
+    <!--La liste des conducteurs-->
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="nomcomplet">
+        <th mat-header-cell *matHeaderCellDef> Nom Conducteur </th>
+        <td mat-cell *matCellDef="let element"> {{element.nomComplet}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="cin">
+        <th mat-header-cell *matHeaderCellDef> CIN </th>
+        <td mat-cell *matCellDef="let element"> {{element.cin}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="cnss">
+        <th mat-header-cell *matHeaderCellDef> CNSS </th>
+        <td mat-cell *matCellDef="let element"> {{element.cnss}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="permis">
+        <th mat-header-cell *matHeaderCellDef> Permis </th>
+        <td mat-cell *matCellDef="let element"> {{element.permis}} </td>
+      </ng-container>
+      <ng-container matColumnDef="societe">
+        <th mat-header-cell *matHeaderCellDef> Societe </th>
+        <td mat-cell *matCellDef="let element"> {{element.societe}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let row">
+          <button class="form-row justify-content-center" mat-icon-button (click)="onEdit(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <!-- <button mat-icon-button color="warn" (click)="onDelete(row.$key)">
             <mat-icon>delete_outline</mat-icon>
           </button> -->
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-  </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+  </div>
 </ion-content>

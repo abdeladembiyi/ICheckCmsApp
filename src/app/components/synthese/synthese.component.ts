@@ -1,5 +1,5 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { CheckListRefService } from 'src/app/core/services/checkListRef/check-list-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
@@ -16,6 +16,7 @@ import { BlockageService } from 'src/app/core/services/blockage/blockage.service
 export class SyntheseComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id', 'date', 'conducteur', 'permis', 'vehicule', 'engin', 'etat', 'rating', 'action'];
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   dataSource = new MatTableDataSource();
   dateEntree = new FormControl(moment());
   dateSortie = new FormControl(moment());
@@ -41,6 +42,7 @@ export class SyntheseComponent implements OnInit, AfterViewInit {
     this.checkListRefService.getAllCheckListRef().subscribe((res: any) => {
       console.log('CheckRefs: ', res);
       this.dataSource.data = res;
+      this.dataSource.paginator = this.paginator;
       this.oldDataSource = this.dataSource.data;
       this.data = <any[]>this.dataSource.data;
     });
